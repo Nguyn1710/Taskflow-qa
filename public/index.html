@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TaskFlow - QA Practice App</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <h1>TaskFlow 📋</h1>
+    <p class="subtitle">QA Practice Application</p>
+
+    <div class="form-section">
+      <h2>Tạo Task Mới</h2>
+      <form id="taskForm">
+        <input type="text" id="title" placeholder="Tiêu đề task..." required>
+        <textarea id="description" placeholder="Mô tả chi tiết..."></textarea>
+        <button type="submit">Tạo Task</button>
+      </form>
+    </div>
+
+    <div class="tasks-section">
+      <h2>Danh Sách Tasks</h2>
+      <div id="tasksList" class="tasks-list">
+        <p class="loading">Đang tải...</p>
+      </div>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
