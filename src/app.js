@@ -16,7 +16,7 @@ const db = new Database(path.join(__dirname, '../data/tasks.db'));
 // Create tasks table if not exists
 db.exec(`
   CREATE TABLE IF NOT EXISTS tasks (
-    id TEXT PRIMARY KEY,
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
     title TEXT NOT NULL,
     description TEXT,
     status TEXT DEFAULT 'pending',
@@ -51,13 +51,13 @@ app.post('/api/tasks', (req, res) => {
   }
 
   try {
-    const id = Math.random().toString(36).substr(2, 9);
     const stmt = db.prepare(
-      'INSERT INTO tasks (id, title, description) VALUES (?, ?, ?)'
+      'INSERT INTO tasks (title, description) VALUES (?, ?)'
     );
-    stmt.run(id, title, description || '');
+    const result = stmt.run(title, description || '');
 
-    const task = db.prepare('SELECT * FROM tasks WHERE id = ?').get(id);
+    const task = db.prepare('SELECT * FROM tasks WHERE id = ?').get(result.lastInsertRowid);
+
     res.status(201).json({ success: true, task });
   } catch (error) {
     res.status(500).json({ success: false, error: error.message });

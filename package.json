@@ -1,26 +1,22 @@
 {
-  "name": "taskflow-qa",
-  "version": "1.0.0",
-  "main": "index.js",
-  "directories": {
-    "test": "test"
-  },
+  "name": "taskflow",
+  "version": "0.1.0",
+  "type": "module",
   "scripts": {
+    "dev": "node src/index.js",
     "start": "node src/index.js",
-    "test": "vitest"
+    "test": "vitest",
+    "test:ui": "vitest --ui",
+    "test:coverage": "vitest --coverage",
+    "test:watch": "vitest --watch"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "description": "",
   "dependencies": {
-    "better-sqlite3": "^12.9.0",
-    "express": "^5.2.1"
+    "express": "^4.18.2",
+    "sqlite3": "^5.1.6"
   },
   "devDependencies": {
-    "@testing-library/dom": "^10.4.1",
-    "jsdom": "^29.1.1",
-    "supertest": "^7.2.2",
-    "vitest": "^4.1.5"
+    "vitest": "^1.2.0",
+    "jsdom": "^23.0.0",
+    "acorn": "^8.10.0"
   }
 }
